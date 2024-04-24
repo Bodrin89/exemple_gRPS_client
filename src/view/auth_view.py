@@ -2,12 +2,12 @@ from fastapi import APIRouter
 from google.protobuf.json_format import MessageToJson
 
 from grpc_client import UnaryClient
-from src.schemas.auth_schemas import AuthOut, AuthIn
+from src.schemas.auth_schemas import AuthIn, AuthOut
 
-auth_router = APIRouter(prefix="/auth", tags=["auth"])
+auth_router = APIRouter(prefix='/auth', tags=['auth'])
 
 
-@auth_router.post("/auth", response_model=AuthOut)
+@auth_router.post('/jwt', response_model=AuthOut)
 async def generate_jwt_token(auth_data: AuthIn):
     """View для получения access и refresh токенов"""
     auth_data_json = auth_data.json()

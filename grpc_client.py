@@ -3,6 +3,7 @@ from fastapi import HTTPException
 
 import protobuf.get_user_info_pb2 as pb2
 import protobuf.get_user_info_pb2_grpc as pb2_grpc
+from src.config.settings import GRPC_HOST, GRPC_PORT
 
 
 class UnaryClient(object):
@@ -11,8 +12,8 @@ class UnaryClient(object):
     """
 
     def __init__(self):
-        self.host = 'localhost'
-        self.server_port = 50051
+        self.host = GRPC_HOST
+        self.server_port = GRPC_PORT
 
         # instantiate a channel
         self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.server_port))
