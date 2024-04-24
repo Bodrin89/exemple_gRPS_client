@@ -6,6 +6,10 @@ class AuthIn(BaseModel):
     password: str
 
 
+class UpdateTokenIn(BaseModel):
+    refresh_token: str
+
+
 class AuthOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
