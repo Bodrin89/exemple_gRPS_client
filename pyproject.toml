@@ -13,11 +13,19 @@ pydantic = {version = "2.6", extras = ["email"]}
 asyncpg = "^0.29.0"
 grpcio-tools = "^1.62.2"
 fastapi-debug-toolbar = "^0.6.2"
+tortoise-orm = "^0.20.0"
+python-dotenv = "^1.0.1"
+aerich = "^0.7.2"
 
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.7.0"
 
+
+[tool.aerich]
+tortoise_orm = "src.config.settings.DATABASE_CONFIG"
+location = "./migrations"
+src_folder = "./."
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
