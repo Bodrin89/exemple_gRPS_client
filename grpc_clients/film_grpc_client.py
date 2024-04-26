@@ -10,6 +10,13 @@ class FilmGrpcClient(object):
     def __init__(self):
         self.host = GRPC_HOST
         self.port = GRPC_PORT
+
+        # # Защищенный канал
+        # cert = open('ssl/cert.pem', 'rb').read()
+        # credentials = grpc.ssl_channel_credentials(cert)
+        # self.channel = grpc.secure_channel('{}:{}'.format(self.host, self.server_port), credentials)
+
+        # Не защищенный канал
         self.channel = grpc.insecure_channel(f'{self.host}:{self.port}')
         self.stub = get_role_pb2_grpc.GetRoleStub(self.channel)
 

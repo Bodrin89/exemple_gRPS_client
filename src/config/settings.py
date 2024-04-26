@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GRPC_HOST = 'localhost'
+# GRPC_HOST = '192.168.69.5'
 GRPC_PORT = 50051
 
 

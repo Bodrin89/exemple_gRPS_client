@@ -17,7 +17,12 @@ class UnaryClient(object):
         self.host = GRPC_HOST
         self.server_port = GRPC_PORT
 
-        # instantiate a channel
+        # # Защищенный канал
+        # cert = open('ssl/cert.pem', 'rb').read()
+        # credentials = grpc.ssl_channel_credentials(cert)
+        # self.channel = grpc.secure_channel('{}:{}'.format(self.host, self.server_port), credentials)
+
+        # Не защищенный канал
         self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.server_port))
 
         # bind the client and the server
@@ -41,6 +46,13 @@ class ValidTokenClient(object):
     def __init__(self):
         self.host = GRPC_HOST
         self.server_port = GRPC_PORT
+
+        # # Защищенный канал
+        # cert = open('ssl/cert.pem', 'rb').read()
+        # credentials = grpc.ssl_channel_credentials(cert)
+        # self.channel = grpc.secure_channel('{}:{}'.format(self.host, self.server_port), credentials)
+
+        # Не защищенный канал
         self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.server_port))
         self.stub = update_token_pb2_grpc.ValidTokenStub(self.channel)
 
